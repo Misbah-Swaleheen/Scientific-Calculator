@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container-fuild" id="container">
+        <div>
+            <button type="button" class="btn1" onclick="show()"><i class="fa fa-bars" aria-hidden="true"></i></button>
+        </div>
+        <div class="list btn-hide" id="list">
+            
+                    <button type="button" class="btn2" onclick="display_scientific_calc(this)" value="basic" > Basic</button>
+              
+                    <button type="button" class="btn2" onclick="display_scientific_calc(this)" value="scientific"> Scientific</button>
+            
+        </div>
+        <div class="head-inner">
+            <input type="text" name="input" id="input" class="screen">
+            <input type="text" name="result" id="result" class="screen">
+        </div>
+        
+        <div class="body-inner">
+            
+            <div class="lg-btn">
+                <input type="button" class="btn " name="clear" id="btn" onclick="clearAll()" value="C">
+                <input type="button" class="btn" name="delete" id="btn" onclick="del()" value="Del">
+                <input type="button" class="btn" name="seven" id="btn" onclick="calculate()" value="=">
+                <input type="button" class="btn" name="delete" id="btn" onclick="resp()" value="1/x">
+                <button type="button" class="btn sbtn btn-hide" name="square" id="btn" onclick="square()" >x<sup>2</sup></button>
+                <input type="button" class="btn sbtn btn-hide" name="abs" id="btn" onclick="absolute()" value="|x|">
+            </div>
+            
+            <div class="input-col">
+                <input type="button" class="btn" name="seven" id="btn" onclick="getNum('7')" value="7">
+                <input type="button" class="btn" name="seven" id="btn" onclick="getNum('8')" value="8">
+                <input type="button" class="btn" name="seven" id="btn" onclick="getNum('9')" value="9">
+                <input type="button" class="btn" name="seven" id="btn" onclick="getNum('/')" value="/">
+                <input type="button" class="btn sbtn btn-hide" name="tan" id="btn" onclick="tangent()" value="tan">
+                <input type="button" class="btn sbtn btn-hide" name="sqroot" id="btn" onclick="square_root()" value="&#8730x">
+            </div>
+            <div class="input-col">
+                <input type="button" class="btn" name="seven" id="btn" onclick="getNum('4')" value="4">
+                <input type="button" class="btn" name="seven" id="btn" onclick="getNum('5')" value="5">
+                <input type="button" class="btn" name="seven" id="btn" onclick="getNum('6')" value="6">
+                <input type="button" class="btn" name="seven" id="btn" onclick="getNum('*')" value="*">
+                <input type="button" class="btn sbtn btn-hide" name="cos" id="btn" onclick="cosine()" value="cos">
+                <input type="button" class="btn sbtn btn-hide" name="exp" id="btn" onclick="exponent()" value="exp">
+            </div>
+            <div class="input-col">
+                <input type="button" class="btn" name="seven" id="btn" onclick="getNum('1')" value="1">
+                <input type="button" class="btn" name="seven" id="btn" onclick="getNum('2')" value="2">
+                <input type="button" class="btn" name="seven" id="btn" onclick="getNum('3')" value="3">
+                <input type="button" class="btn" name="seven" id="btn" onclick="getNum('-')" value="-">
+                <input type="button" class="btn sbtn btn-hide" name="sin" id="btn" onclick="sine()" value="sin">
+                <input type="button" class="btn sbtn btn-hide" name="log" id="btn" onclick="logrithm()" value="log">
+            </div>
+            <div class="input-col">
+                <input type="button" class="btn" name="seven" id="btn" onclick="getNum('%')" value="%">
+                <input type="button" class="btn" name="seven" id="btn" onclick="getNum('0')" value="0">
+                <input type="button" class="btn" name="seven" id="btn" onclick="getNum('.')" value=".">
+                <input type="button" class="btn" name="seven" id="btn" onclick="getNum('+')" value="+">
+                <input type="button" class="btn sbtn btn-hide" name="pi" id="btn" onclick="pi()" value="&#8508">
+                <input type="button" class="btn sbtn btn-hide" name="neg" id="btn" onclick="negative()" value="+/-">
+            </div>
+        </div>
+    </div>
+</body>
+<script >
+    function getNum(num){
+        var res = document.getElementById("result");  
+    var number = document.getElementById("input");
+    if(res.value != ""){
+        clearAll();
+    }
+    number.value += num;
+   
+}
+function clearAll(){
+    var inpt = document.getElementById("input");
+    var res = document.getElementById("result");
+    inpt.value = "";
+     res.value = "";
+}
+function del(){
+    var inpt = document.getElementById("input");
+    var str = inpt.value.slice(0, inpt.value.length-1);
+    inpt.value = str;
+}
+function calculate(){
+    var inpt = document.getElementById("input");
+    var res = document.getElementById("result");
+    res.value = eval(inpt.value);
+  
+
+}
+function resp(){
+    var inpt = document.getElementById("input");
+    var res = document.getElementById("result");
+    res.value = 1/parseFloat(inpt.value);
+}
+function pi(){
+    var res = document.getElementById("result");
+    if(res.value != ""){
+        clearAll();
+    }
+    document.getElementById("input").value = Math.PI;
+}
+function negative(){
+ var input =   document.getElementById("input");
+  input.value =   "-(" +input.value +")";
+}
+function logrithm(){
+    var inpt = document.getElementById("input");
+    var res = document.getElementById("result");
+    
+    res.value = Math.log10(inpt.value);
+    inpt.value = "log(" + inpt.value+")";
+}
+function sine(){
+    var inpt = document.getElementById("input");
+    var res = document.getElementById("result");
+    
+    res.value = Math.sin(inpt.value);
+    inpt.value = "sin(" + inpt.value+")";
+}
+function cosine(){
+    var inpt = document.getElementById("input");
+    var res = document.getElementById("result");
+    
+    res.value = Math.cos(inpt.value);
+    inpt.value = "cos(" + inpt.value+")";
+}
+function tangent(){
+    var inpt = document.getElementById("input");
+    var res = document.getElementById("result");
+    
+    res.value = Math.tan(inpt.value);
+    inpt.value = "tan(" + inpt.value+")";
+}
+function exponent(){
+    var inpt = document.getElementById("input");
+    var res = document.getElementById("result");
+    
+    res.value = Math.exp(inpt.value);
+    inpt.value = "exp(" + inpt.value+")";
+}
+function square_root(){
+    var inpt = document.getElementById("input");
+    var res = document.getElementById("result");
+    
+    res.value = Math.sqrt(inpt.value);
+    inpt.value = "sqrt(" + inpt.value+")";
+}
+function absolute(){
+    var inpt = document.getElementById("input");
+    var res = document.getElementById("result");
+    
+    res.value = Math.abs(inpt.value);
+    inpt.value = "abs(" + inpt.value+")";
+}
+function square(){
+    var inpt = document.getElementById("input");
+    var res = document.getElementById("result");
+    
+    res.value =parseInt(inpt.value) * parseInt(inpt.value); 
+    inpt.value = "sqr(" + inpt.value+")";
+}
+function show(){
+    var list = document.getElementById('list');
+    if(list.classList.contains('btn-hide')){
+        list.classList.remove('btn-hide')
+        list.classList.add('btn-show')
+    }
+}
+function display_scientific_calc(a){
+    var list = document.getElementById('list');
+    var container = document.getElementById('container');
+    var input = document.getElementsByClassName('sbtn');
+    var value = a.value;
+   console.log(input)
+   for(i=0 ; i < input.length ; i++){
+    if( value === 'scientific'){
+        container.style.width = 40 +"%";
+        list.style.left = 31 + "%";
+    if(input[i].classList.contains('btn-hide')){
+        input[i].classList.remove('btn-hide')
+        input[i].classList.add('btn-show')
+    }
+    }
+    else{
+        list.style.left = 35.8 + "%";
+        container.style.width = 30 +"%";
+        input[i].classList.remove('btn-show')
+        input[i].classList.add('btn-hide')
+    }
+   }
+   if(list.classList.contains('btn-show')){
+        list.classList.remove('btn-show')
+        list.classList.add('btn-hide')
+    }
+
+}
+</script>
+
+</html>
